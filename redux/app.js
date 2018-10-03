@@ -20,9 +20,15 @@ const io = socket(server)
 
 io.on('connection', socket => {
   console.log(`User connected: ${socket.client.id}`)
+  socket.emit('addItem', 'Hello new user')
   const timer = setInterval(() => {
     socket.emit('addItem', Math.floor(Math.random()*1000))
-  }, 5000)
+  }, 15000)
+  socket.on('userAdd', payload => {
+    console.log(`${socket.client.id} added: ${payload}`)
+    socket.emit('addItem', `${socket.client.id}: ${payload}`)
+    socket.broadcast.emit('addItem', `${socket.client.id}: ${payload}`)
+  })
 })
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/build/index.html')))

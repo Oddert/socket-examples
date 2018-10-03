@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addMessage } from '../actions'
 import socket from '../sockets'
+import Send from './Send'
 
 class Container extends React.Component {
   componentDidMount () {
@@ -15,6 +16,7 @@ class Container extends React.Component {
     return (
       <div>
         <h2>Some Nonsence from the Server</h2>
+        <Send />
         <ul>
           {this.props.messages.map((each, idx) =>
             <li key={idx}>{each}</li>
