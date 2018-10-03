@@ -1,0 +1,21 @@
+{
+  "name": "socket-eamples-redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm run start",
+    "server": "nodemon app.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Robyn Veitch",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  }
+}
