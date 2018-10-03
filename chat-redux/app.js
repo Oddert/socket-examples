@@ -15,3 +15,11 @@ var server = app.listen(
   PORT
   , () => console.log(`${new Date().toLocaleTimeString()}: Server initialised on PORT: ${PORT}...`)
 )
+
+const io = socket(server)
+
+io.on('connect', socket => {
+  console.log(`User ${socket.client.id} connected`)
+})
+
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/build/index.html')))
