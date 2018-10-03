@@ -8,6 +8,7 @@ const express = require('express')
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname, '/client/build'))
 
 const PORT = process.env.PORT || 5000
 var server = app.listen(
@@ -23,3 +24,5 @@ io.on('connection', socket => {
     socket.emit('addItem', Math.floor(Math.random()*1000))
   }, 5000)
 })
+
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/build/index.html')))

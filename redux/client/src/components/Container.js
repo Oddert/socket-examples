@@ -14,7 +14,7 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <h2>container comp</h2>
+        <h2>Some Nonsence from the Server</h2>
         <ul>
           {this.props.messages.map((each, idx) =>
             <li key={idx}>{each}</li>
