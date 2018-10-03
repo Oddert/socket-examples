@@ -1,23 +1,36 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { addCount } from '../actions'
+import { addMessage } from '../actions'
+import socket from '../sockets'
 
 class Container extends React.Component {
+  componentDidMount () {
+    socket.on('addItem', payload => {
+      console.log(payload)
+      this.props.addMessage(payload)
+    })
+  }
+
   render() {
     return (
       <div>
-       <h2>container comp</h2>
-     </div>
+        <h2>container comp</h2>
+        <ul>
+          {this.props.messages.map((each, idx) =>
+            <li key={idx}>{each}</li>
+          )}
+        </ul>
+      </div>
    )
   }
 }
 
-// const mapStateToProps = state => ({
-//   counter: state.counter
-// })
-//
-// const mapDispatchToProps = dispatch => ({
-//   addCount: () => dispatch(addCount())
-// })
+const mapStateToProps = state => ({
+  messages: state.messages
+})
 
-export default connect(null, null)(Container)
+const mapDispatchToProps = dispatch => ({
+  addMessage: payload => dispatch(addMessage(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container)
