@@ -20,7 +20,14 @@ const io = socket(server)
 
 io.on('connect', socket => {
   console.log(`User ${socket.client.id} connected`)
-  socket.broadcast.emit('addUser', socket.client.id)
+  socket.broadcast.emit('updateUsers', [socket.client.id])
+
+  socket.broadcast.emit('addMessage', {
+    user: 'Server',
+    message: `User ${socket.client.id} has entered the chat room`,
+    sent: new Date().toString(),
+    status: true
+  })
 
   socket.emit('addMessage', {
     user: 'Server',
@@ -42,13 +49,15 @@ io.on('connect', socket => {
     })
   })
 
-  // const test = setInterval(() => {
-  //   socket.emit('addMessage', {
-  //     user: 'Server',
-  //     message: `Hello, i have this for u: ${Math.floor(Math.random()*101)}`,
-  //     sent: new Date().toString()
-  //   })
-  // }, 5000)
+  socket.on('disconnect', () =>
+    socket.broadcast.emit('addMessage', {
+      user: 'Server',
+      message: `User ${socket.client.id} has disconnected`,
+      sent: new Date().toString(),
+      status: true
+    })
+  )
+
 })
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/build/index.html')))

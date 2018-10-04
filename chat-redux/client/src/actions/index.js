@@ -5,12 +5,7 @@ export const addMessage = payload => ({
   payload
 })
 
-export const addUser = payload => ({
-  type: types.ADD_USER,
-  payload
-})
-
-export const removeUser = payload => ({
-  type: types.REMOVE_USER,
+export const updateUsers = payload => ({
+  type: types.UPDATE_USERS,
   payload
 })

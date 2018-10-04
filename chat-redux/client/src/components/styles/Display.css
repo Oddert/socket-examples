@@ -14,6 +14,10 @@
   justify-content: flex-end;
 }
 
+.message-container.status {
+  justify-content: center;
+}
+
 .message {
   /* border: 1px dashed red; */
   text-align: left;
@@ -24,6 +28,14 @@
   width: auto;
   max-width: 80%;
   font-size: .8em;
+}
+
+.message.status {
+  background: none;
+  width: 100%;
+  text-align: center;
+  margin: 5px;
+  padding: 0;
 }
 
 .message-container.self .message {

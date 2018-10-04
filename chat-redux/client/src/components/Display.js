@@ -14,14 +14,23 @@ class Display extends React.Component {
   render () {
     return (
       <div className='Display'>
-        {this.props.messages.map(each =>
+        {this.props.messages.map((each, idx) =>
           <div
-            className={each.self ? 'message-container self' : 'message-container'}
-            key={each.sent}
+            className={
+              each.status
+                ? 'message-container status'
+                : each.self
+                  ? 'message-container self'
+                  : 'message-container'
+              }
+            key={idx}
             >
-            <div className='message'>
-              <strong>{each.self ? 'Me' : each.user}</strong>: {each.message}
-            </div>
+            {each.status
+              ? <div className='message status'>{each.message}</div>
+              : <div className='message'>
+                  <strong>{each.self ? 'Me' : each.user}</strong>: {each.message}
+                </div>
+              }
           </div>
         )}
       </div>
