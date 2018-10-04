@@ -20,6 +20,35 @@ const io = socket(server)
 
 io.on('connect', socket => {
   console.log(`User ${socket.client.id} connected`)
+  socket.broadcast.emit('addUser', socket.client.id)
+
+  socket.emit('addMessage', {
+    user: 'Server',
+    message: 'Welcome to the chat!',
+    sent: new Date().toString()
+  })
+
+  socket.on('newMessage', payload => {
+    socket.emit('addMessage', {
+      user: socket.client.id,
+      message: payload,
+      sent: new Date().toString(),
+      self: true
+    })
+    socket.broadcast.emit('addMessage', {
+      user: socket.client.id,
+      message: payload,
+      sent: new Date().toString()
+    })
+  })
+
+  // const test = setInterval(() => {
+  //   socket.emit('addMessage', {
+  //     user: 'Server',
+  //     message: `Hello, i have this for u: ${Math.floor(Math.random()*101)}`,
+  //     sent: new Date().toString()
+  //   })
+  // }, 5000)
 })
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/build/index.html')))

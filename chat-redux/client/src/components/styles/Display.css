@@ -1,0 +1,31 @@
+
+.Display {
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.message-container {
+  /* border: 1px dashed steelblue; */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.message-container.self {
+  justify-content: flex-end;
+}
+
+.message {
+  /* border: 1px dashed red; */
+  text-align: left;
+  background-color: #ecf0f1;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 3px;
+  width: auto;
+  max-width: 80%;
+  font-size: .8em;
+}
+
+.message-container.self .message {
+  background-color: #bddef5;
+}
