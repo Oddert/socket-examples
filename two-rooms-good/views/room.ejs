@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Socket three room test</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://use.fontawesome.com/c98d4b8a6d.js"></script>
+  </head>
+  <body>
+    <a href='/'><i class='fa fa-angle-left'></i> Back</a>
+    <h1>Welcome to the room: <%= room %></h1>
+    <p style='opacity: 0;' id='room'><%= room %></p>
+    <h2>Messages:</h2>
+    <div id="messages">
+
+    </div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/js/room.js"></script>
+</html>

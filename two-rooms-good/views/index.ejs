@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Socket three room test</title>
+    <link rel="stylesheet" href="/css/index.css">
+  </head>
+  <body>
+    <h1>Some rooms:</h1>
+    <strong id='server-status'>Server status...</strong>
+    <ul>
+      <% rooms.forEach(each => { %>
+        <li><a href='/room/<%= each %>'><%= each %></a></li>
+      <% }) %>
+    </ul>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/js/index.js"></script>
+</html>
