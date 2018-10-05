@@ -10,7 +10,7 @@ function addElem (newText) {
 
 addElem('Test Item')
 
-const socket = io.connect('http://localhost:3000/')
+const socket = io.connect()
 
 socket.on('listItem', payload => addElem(payload))
 
