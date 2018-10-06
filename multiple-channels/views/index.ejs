@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Channels | Socket Examples</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js'></script>
+  </head>
+  <body>
+    <!-- <h1>Multiple Channels | Socket Examples</h1> -->
+    <div class='display-flex'>
+      <h2 class='title'>Currently in room: <span id='room-display'>default</span></h2>
+      <form class='input' id='send_message'>
+        <input type="text" id='send_message_input' />
+        <button name="button">Send message</button>
+      </form>
+    </div>
+    <div class='display-flex'>
+      <div class='room-select'>
+        <h3>Rooms:</h3>
+        <ul>
+          <% rooms.forEach(each => { %>
+            <li><button onClick="changeRoom('<%= each %>')"><%= each %></button></li>
+          <% }) %>
+        </ul>
+      </div>
+      <div id='display'></div>
+    </div>
+  </body>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script type="text/javascript" src="/js/index.js"></script>
+</html>

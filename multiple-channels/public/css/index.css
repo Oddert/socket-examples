@@ -1,0 +1,39 @@
+* {
+  font-family: arial, helvetica, 'sans serif';
+}
+
+.display-flex {
+  /* border: 1px solid limegreen; */
+  display: flex;
+}
+
+.title {
+  flex: 1;
+  /* border: 1px dashed black; */
+}
+
+.input {
+  flex: 1;
+  /* border: 1px dashed black; */
+  display: flex;
+  align-items: center;
+}
+
+.input input {
+  flex: 1;
+}
+
+.room-select {
+  /* border: 1px dashed steelblue; */
+  padding: 0px 10px;
+}
+
+.room-select h3 {
+  margin-top: 0;
+}
+
+#display {
+  /* border: 1px dashed tomato; */
+  flex: 1;
+  padding: 10px;
+}
