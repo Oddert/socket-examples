@@ -31,9 +31,15 @@ io.on('connection', socket => {
   socket.emit('message', 'Welcome to the default room!')
 
   socket.on('join-room', payload => {
+    if (socket.room) {
+      console.log(`Socket leaving room: ${socket.room}`)
+      socket.broadcast.to(socket.room).emit('message', `${socket.client.id} left ${socket.room}`)
+      socket.leave(socket.room)
+    }
     socket.join(payload)
     socket.emit('joined-room', payload)
     socket.broadcast.to(payload).emit('message', `${socket.client.id} joined room: ${payload}`)
+    socket.room = payload
     console.log(`${socket.client.id} joined room: ${payload}`)
   })
 
