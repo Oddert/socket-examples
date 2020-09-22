@@ -12,11 +12,11 @@
   "author": "Robyn Veitch",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "concurrently": "^4.0.1",
-    "cookie-parser": "^1.4.3",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "socket.io": "^2.1.1"
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.2",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
   }
 }
